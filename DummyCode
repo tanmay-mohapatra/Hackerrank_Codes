@@ -2,7 +2,7 @@
 #include<stdbool.h>
 #include<malloc.h>
 
-long long beautifulNumber(long long N){
+long long perfectNumber(long long N){
     //my code
     // I have to find the smallest number next to N which has repetition of its digits same as the values of corrseponding digits
     int count[10]={0};
@@ -18,11 +18,11 @@ long long beautifulNumber(long long N){
         if(count[i]){
             if(count[i]!=i){
                 printf("%d is repeated %d times",i,count[i]);
-                beautifulNumber(N+1); //maybe for this it is taking so long
+                perfectNumber(N+1); //maybe for this it is taking so long
             }
         }
     }
-    return N; //if N itself is a beautiful number
+    return N; //if N itself is a perfect number
 }
 
 int main(){
@@ -34,7 +34,7 @@ int main(){
         printf("Enter the number:");
         scanf("%11d",&N);
 
-        long long out_ = beautifulNumber(N);
+        long long out_ = perfectNumber(N);
         printf("%11d",out_);
         printf("\n");
 
