@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdbool.h>
+#include<malloc.h>
+
+long long beautifulNumber(long long N){
+    //my code
+    // I have to find the smallest number next to N which has repetition of its digits same as the values of corrseponding digits
+    int count[10]={0};
+    if(N<=0){
+        return -1;
+    }
+    int X = N; // in order to retain the value of N
+    while(X>0){
+        ++count[N%10];
+        N/=10;
+    }
+    for(int i=0;i<10;i++){
+        if(count[i]){
+            if(count[i]!=i){
+                printf("%d is repeated %d times",i,count[i]);
+                beautifulNumber(N+1); //maybe for this it is taking so long
+            }
+        }
+    }
+    return N; //if N itself is a beautiful number
+}
+
+int main(){
+    int T;
+    printf("Enter the number of test cases:");
+    scanf("%d",&T);
+    for(int t_i=0;t_i<T;t_i++){
+        long long N;
+        printf("Enter the number:");
+        scanf("%11d",&N);
+
+        long long out_ = beautifulNumber(N);
+        printf("%11d",out_);
+        printf("\n");
+
+    }
+}
